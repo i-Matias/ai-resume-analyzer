@@ -85,6 +85,11 @@ const Resume = () => {
               />
               <Details feedback={feedback} />
             </div>
+          ) : feedback === "" ? (
+            <p className="text-gray-400 text-sm max-w-md whitespace-nowrap">
+              It looks like the analysis couldn't be completed. Please try
+              uploading your resume again.
+            </p>
           ) : (
             <img src="/images/resume-scan-2.gif" className="w-full" />
           )}

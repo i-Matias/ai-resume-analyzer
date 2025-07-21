@@ -39,6 +39,12 @@ export default function Home() {
     loadResumes();
   }, []);
 
+  const handleResumeDelete = (deletedResumeId: string) => {
+    setResumes((prevResumes) =>
+      prevResumes.filter((resume) => resume.id !== deletedResumeId)
+    );
+  };
+
   return (
     <main className="bg-[url('/images/bg-main.svg')] bg-cover">
       <Navbar />
@@ -61,7 +67,11 @@ export default function Home() {
         {!loadingResumes && resumes.length > 0 && (
           <div className="resumes-section">
             {resumes.map((resume) => (
-              <ResumeCard key={resume.id} resume={resume} />
+              <ResumeCard
+                key={resume.id}
+                resume={resume}
+                onDelete={handleResumeDelete}
+              />
             ))}
           </div>
         )}

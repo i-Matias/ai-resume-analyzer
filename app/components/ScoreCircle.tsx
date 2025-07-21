@@ -1,9 +1,13 @@
-export default function ScoreCircle({ score = 75 }: { score: number }) {
+export default function ScoreCircle({
+  score = "?",
+}: {
+  score: number | string;
+}) {
   const radius = 40;
   const stroke = 8;
   const normalizedRadius = radius - stroke / 2;
   const circumference = 2 * Math.PI * normalizedRadius;
-  const progress = score / 100;
+  const progress = typeof score === "number" ? score / 100 : 0;
   const strokeDashoffset = circumference * (1 - progress);
 
   return (

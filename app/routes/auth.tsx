@@ -20,7 +20,8 @@ export default function Auth() {
 
   useEffect(() => {
     if (auth.isAuthenticated) {
-      navigate(next);
+      console.log(next === undefined, typeof next);
+      navigate(next || "/");
     }
   }, [auth.isAuthenticated]);
 
